@@ -1,17 +1,28 @@
 import { test } from "../utils/test.js"
 
 function findNaughtyStep(original, modified) {
-	const originalSet = new Set(...original.split(""))
-	let result = ''
+	const originalArr = original.split("")
+	const modifiedArr = modified.split("")
+	let isFinded = false
 
-	for(const letter of modified.split("")) {
-		console.log(letter)
-		if(originalSet.delete(letter)) {
-			
+	for(let i=0; i<modifiedArr.length; i++) {
+		const finded = originalArr.indexOf(modifiedArr[i])
+		if(finded === -1) {
+			isFinded = true
+			return modifiedArr[i]
 		}
 	}
 
-	return [...originalSet]
+	if(!isFinded) {
+		for(let i=0; i<originalArr.length; i++) {
+			const finded = modifiedArr.indexOf(originalArr[i])
+			if(finded === -1) {
+				return originalArr[i]
+			}
+		}
+	}
+
+	return ""
 }
 
 /* ____________________________1____________________________ */

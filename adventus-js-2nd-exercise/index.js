@@ -57,5 +57,4 @@ const materials3 = 'psli'
 
 const result3 = manufacture(gifts3, materials3).toString()
 const expected3 = [].toString()
-test(3, result3, expected3)
-// []
+test(3, result3, expected3) // []

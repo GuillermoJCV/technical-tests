@@ -32,5 +32,4 @@ test(2, result2, expected2)
 const giftIds3 = [5, 1, 5, 1]
 const result3 = findFirstRepeated(giftIds3)
 const expected3 = 5
-test(3, result3, expected3)
-// 5
+test(3, result3, expected3) // 5

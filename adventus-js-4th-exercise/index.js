@@ -1,10 +1,21 @@
 import { test } from "../utils/test.js"
 
 function decode(message) {
+	const open = message.indexOf("(")
+	const close = message.indexOf(")")
+	const before = message.substring(0, open)
+	const after = message.substring(close + 1)
+	let result = message
 
-
-
-	return ""
+	if(open !== -1) {
+		let newMessage = result.substring(open + 1, close)
+		const newMessageArr = newMessage.split("")
+		newMessageArr.reverse()
+		newMessage = newMessageArr.join("")
+		return before + newMessage + after
+	} else {
+		return result
+	}
 }
 
 /*______________________________1______________________________*/

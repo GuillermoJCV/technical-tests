@@ -5,9 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "primer:regalo:repetido": "node --watch ./adventus-js-1st-exercise/index.js",
-    "ponemos:en:marcha:la:fabrica": "node --watch ./adventus-js-2nd-exercise/index.js",
-    "el:elfo:travieso" : "node --watch ./adventus-js-3rd-exercise/index.js"
+    "1": "node --watch ./adventus-js-1st-exercise/index.js",
+    "2": "node --watch ./adventus-js-2nd-exercise/index.js",
+    "3" : "node --watch ./adventus-js-3rd-exercise/index.js",
+    "4" : "node --watch ./adventus-js-4th-exercise/index.js"
   },
   "keywords": [],
   "author": "",

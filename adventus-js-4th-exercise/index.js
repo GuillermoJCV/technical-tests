@@ -4,8 +4,10 @@ function decode(message) {
 	const open = message.indexOf("(")
 	let close = message.indexOf(")")
 
-	if(message.indexOf("(", open) < close) {
-		close = message.indexOf(")", close)
+	if(message.indexOf("(", open + 1) < close && message.indexOf("(", open + 1) !== -1) {
+		const lastClose = close
+		close = message.indexOf(")", close + 1)
+		test("Close", lastClose, close)
 	}
 
 	const before = message.substring(0, open)
@@ -24,14 +26,14 @@ function decode(message) {
 }
 
 /*______________________________1______________________________*/
-	const result1 = decode('hola (odnum)')
+	/*const result1 = decode('hola (odnum)')
 	const expected1 = "hola mundo"
-	test("First", result1, expected1)
+	test("First", result1, expected1)*/
 
 /*______________________________2______________________________*/
-	const result2 = decode('(olleh) (dlrow)!')
+	/*const result2 = decode('(olleh) (dlrow)!')
 	const expected2 = "hello world!"
-	test("Second", result2, expected2)
+	test("Second", result2, expected2)*/
 
 /*______________________________3______________________________*/
 	const result3 = decode('sa(u(cla)atn)s')

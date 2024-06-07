@@ -5,10 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "1": "node --watch ./adventus-js-1st-exercise/index.js",
-    "2": "node --watch ./adventus-js-2nd-exercise/index.js",
-    "3" : "node --watch ./adventus-js-3rd-exercise/index.js",
-    "4" : "node --watch ./adventus-js-4th-exercise/index.js"
+    "1": "node --watch ./exercise#1/index.js",
+    "2": "node --watch ./exercise#2/index.js",
+    "3" : "node --watch ./exercise#3/index.js",
+    "4" : "node --watch ./exercise#4/index.js"
   },
   "keywords": [],
   "author": "",

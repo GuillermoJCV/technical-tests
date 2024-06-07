@@ -2,12 +2,12 @@ import { test } from "../utils/test.js"
 
 function decode(message) {
 	let recursiveCount = 0
-	const open = message.indexOf("(") // 2
-	let close = message.indexOf(")") // 8
+	const open = message.indexOf("(")
+	let close = message.indexOf(")")
 	let result = message
 
-	const nextOpen = message.indexOf("(", open + 1) // 4
-	const nextClose = message.indexOf(")", close + 1) // 12
+	const nextOpen = message.indexOf("(", open + 1)
+	const nextClose = message.indexOf(")", close + 1)
 	
 	if(nextOpen !== open && nextOpen !== -1 && nextOpen < close) {
 		result = message
@@ -18,8 +18,8 @@ function decode(message) {
 		close = nextClose
 	}
 
-	const before = message.substring(0, open) // sa
-	const after = message.substring(close + 1) // s
+	const before = message.substring(0, open)
+	const after = message.substring(close + 1)
 
 	if(open !== -1 && close !== -1 && recursiveCount < 20) {
 		let newMessage = result.substring(open + 1, close)

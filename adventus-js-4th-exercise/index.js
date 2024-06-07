@@ -1,24 +1,32 @@
 import { test } from "../utils/test.js"
 
 function decode(message) {
-	const open = message.indexOf("(")
-	let close = message.indexOf(")")
-
-	if(message.indexOf("(", open + 1) < close && message.indexOf("(", open + 1) !== -1) {
-		const lastClose = close
-		close = message.indexOf(")", close + 1)
-		test("Close", lastClose, close)
-	}
-
-	const before = message.substring(0, open)
-	const after = message.substring(close + 1)
+	let recursiveCount = 0
+	const open = message.indexOf("(") // 2
+	let close = message.indexOf(")") // 8
 	let result = message
 
-	if(open !== -1 && close !== -1) {
+	const nextOpen = message.indexOf("(", open + 1) // 4
+	const nextClose = message.indexOf(")", close + 1) // 12
+	
+	if(nextOpen !== open && nextOpen !== -1 && nextOpen < close) {
+		result = message
+			.replace(")", "(")
+			.replace(
+				result.substring(nextOpen - 1, nextOpen + 1),
+				result.substring(nextOpen - 1, nextOpen) + ")") 
+		close = nextClose
+	}
+
+	const before = message.substring(0, open) // sa
+	const after = message.substring(close + 1) // s
+
+	if(open !== -1 && close !== -1 && recursiveCount < 20) {
 		let newMessage = result.substring(open + 1, close)
 		const newMessageArr = newMessage.split("")
 		newMessageArr.reverse()
 		newMessage = newMessageArr.join("")
+		recursiveCount += 1
 		return decode(before + newMessage + after)
 	} else {
 		return result
@@ -26,15 +34,13 @@ function decode(message) {
 }
 
 /*______________________________1______________________________*/
-	/*const result1 = decode('hola (odnum)')
+	const result1 = decode('hola (odnum)')
 	const expected1 = "hola mundo"
-	test("First", result1, expected1)*/
-
+	test("First", result1, expected1)
 /*______________________________2______________________________*/
-	/*const result2 = decode('(olleh) (dlrow)!')
+	const result2 = decode('(olleh) (dlrow)!')
 	const expected2 = "hello world!"
-	test("Second", result2, expected2)*/
-
+	test("Second", result2, expected2)
 /*______________________________3______________________________*/
 	const result3 = decode('sa(u(cla)atn)s')
 	const expected3 = "santaclaus"

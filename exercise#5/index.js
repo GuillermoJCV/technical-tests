@@ -1,11 +1,39 @@
 import { test } from "../utils/test.js"
 
-
-
 function cyberReindeer(road, time) {
-  
+  const SANTA_TRUCK = 'S'
+  const result = []
+  let roadMap = road.split("")
+  roadMap[roadMap.indexOf(SANTA_TRUCK)] = '.'
+  let delay = 0
+  for(let i=0; i <= time; i++) {
+    let roadCopy
+    if (i === 5) {
+      const newRoad = road.replaceAll(SANTA_TRUCK, '.')
+                          .replaceAll('|', '*')
+      roadMap = newRoad.split("")
+      roadCopy = [...roadMap]
+    } else {
+      roadCopy = [...roadMap]
+    }
 
-  return []
+    const currentPos = i - delay
+    const nextStep = roadCopy[currentPos + 1] || ''
+
+    if(nextStep && nextStep !== '|') {
+      roadCopy[currentPos] = SANTA_TRUCK
+      result.push(roadCopy.join(''))
+      continue
+    } else if(nextStep === '|') {
+      roadCopy[currentPos] = SANTA_TRUCK
+      result.push(roadCopy.join(''))
+      delay++
+      continue
+    }
+
+  }
+
+  return result
 }
 
 const road = 'S..|...|..'
@@ -24,7 +52,9 @@ const expectedResults = [
   '...*...S..',
 ]
 
+console.time("Test time")
 test("Road map", cyberReindeer(road, time), expectedResults)
+console.timeEnd("Test time")
 
 /* -> result:
 [

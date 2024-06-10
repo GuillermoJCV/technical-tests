@@ -8,7 +8,8 @@
     "1": "node --watch ./exercise#1/index.js",
     "2": "node --watch ./exercise#2/index.js",
     "3" : "node --watch ./exercise#3/index.js",
-    "4" : "node --watch ./exercise#4/index.js"
+    "4" : "node --watch ./exercise#4/index.js",
+    "5" : "node --watch ./exercise#5/index.js"
   },
   "keywords": [],
   "author": "",

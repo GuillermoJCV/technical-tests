@@ -7,24 +7,22 @@ function test(id, input, expected) {
 	let received = {};
 	let expect = {};
 
-	switch(input.constructor.name)
-	{
+	switch(input.constructor.name) {
 		case(input.constructor.name): {
-			received = input.join("\n")
-			expect = expected.join("\n")
+			received = input.join("\n------\n")
+			expect = expected.join("\n------\n")
 		}
 		default: {
-			received = input
-			expect = expected
+			received = input.toString()
+			expect = expected.toString()
 		}
 	}
 
-	
 	try {
-		assert.equal(received, expect, `\nReceived "\n${received}"\nand it was \nexpected\n"${expect}"`)
+		assert.equal(received, expect, `\nReceived \n"${received}"\nand it was expected\n"${expect}"`)
 		console.log("\x1b[32m", `${id} passed : input:"${received}" expected:"${expect}"`)
 	} catch(err) {
-		console.log("\x1b[31m", `${id} : ${err}`)
+		console.error(`${id} : ${err}`)
 	}
 	console.log("\x1b[0m")
 }
@@ -32,3 +30,35 @@ function test(id, input, expected) {
 export { 
 	test 
 }
+
+"S..|...|..,.S.|...|..,..S|...|..,..S|...|..,..S|...|..,..S*...*..,...S...*..,...*S..*..,...*.S.*..,...*..S*.."
+
+"S..|...|..,.S.|...|..,..S|...|..,..S|...|..,..S|...|..,...S...*..,...*S..*..,...*.S.*..,...*..S*..,...*...S.."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

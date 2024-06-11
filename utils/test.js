@@ -8,7 +8,7 @@ function test(id, input, expected) {
 	let expect = {};
 
 	switch(input.constructor.name) {
-		case(input.constructor.name): {
+		case(input.constructor.name === "Array"): {
 			received = input.join("\n------\n")
 			expect = expected.join("\n------\n")
 		}
@@ -20,7 +20,7 @@ function test(id, input, expected) {
 
 	try {
 		assert.equal(received, expect, `\nReceived \n"${received}"\nand it was expected\n"${expect}"`)
-		console.log("\x1b[32m", `${id} passed : input:"${received}" expected:"${expect}"`)
+		console.log("\x1b[32m", `${id} passed :\n input:\n"${received}"\n expected:\n"${expect}"\n`)
 	} catch(err) {
 		console.error(`${id} : ${err}`)
 	}

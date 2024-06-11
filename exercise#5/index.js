@@ -7,10 +7,10 @@ function cyberReindeer(road, time) {
   roadMap[roadMap.indexOf(SANTA_TRUCK)] = '.'
   let delay = 0
   for(let i=0; i < time; i++) {
-
     /* Verifica si tiene que abrir las barreras o no*/
     let roadCopy
     if (i === 5) {
+      delay--
       const newRoad = road.replaceAll(SANTA_TRUCK, '.')
                           .replaceAll('|', '*')
       roadMap = newRoad.split("")
@@ -60,18 +60,3 @@ const expectedResults = [
 console.time("Test time")
 test("Road map", cyberReindeer(road, time), expectedResults)
 console.timeEnd("Test time")
-
-/* -> result:
-[
-  'S..|...|..', // estado inicial
-  '.S.|...|..', // avanza el trineo la carretera
-  '..S|...|..', // avanza el trineo la carretera
-  '..S|...|..', // el trineo para en la barrera
-  '..S|...|..', // el trineo para en la barrera
-  '...S...*..', // se abre la barrera, el trineo avanza
-  '...*S..*..', // avanza el trineo la carretera
-  '...*.S.*..', // avanza el trineo la carretera
-  '...*..S*..', // avanza el trineo la carretera
-  '...*...S..', // avanza por la barrera abierta
-]
-*/
